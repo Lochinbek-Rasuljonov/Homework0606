@@ -1,0 +1,58 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# PyCharm specific files
+.idea/
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.Python
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test and coverage reports
+.coverage
+.coverage.*
+nosetests.xml
+pytest-debug.log
+*.coveragerc
+
+# Django stuff
+*.log
+*.pot
+*.py[cod]
+instance/
+.webassets-cache
+
+# mypy
+.mypy_cache/
+
+# Pyre type checker
+.pyre/
+
+# VSCode settings (if you use VSCode)
+.vscode/
+
+# JetBrains
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+Desktop.ini

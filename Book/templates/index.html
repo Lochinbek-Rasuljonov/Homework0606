@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitob do'koni</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Kitob do'koni</h1>
+
+        <div class="row">
+            <!-- Categories Section -->
+            <div class="col-md-4">
+                <h3>Categories</h3>
+                <ul class="list-group">
+                    {% for category in categories %}
+                    <li class="list-group-item">
+                        {{ category.name }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Books Section -->
+            <div class="col-md-8">
+                <h3>Kitoblar</h3>
+                <div class="row">
+                    {% for book in books %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <!-- Book image -->
+                            {% if book.image %}
+                            <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
+                            {% else %}
+                            <img src="https://via.placeholder.com/150" class="card-img-top" alt="book image">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                                <p class="card-text">{{ book.summary|truncatewords:15 }}</p>
+                                <!-- Book price -->
+                                <p class="card-text">Price: ${{ book.price }}</p>
+                                <a href="{% url 'book_detail' book.id %}" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+</body>
+
+</html>
