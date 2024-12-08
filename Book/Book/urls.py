@@ -20,12 +20,18 @@ from django.urls import path
 from bookAPP.views import home, book_detail
 from django.conf import settings
 
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path
+from bookAPP.views import home, book_detail, books_by_author
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('book/<int:id>/', book_detail, name='book_detail'),
+    path('author/<int:category_id>/',books_by_author, name='books_by_author'),
 ]
-
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

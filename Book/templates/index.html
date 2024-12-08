@@ -6,33 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitob do'koni</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .card:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Kitob do'koni</h1>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-primary text-white py-4">
+        <h1 class="text-center text-4xl font-bold">Kitob Do'koni</h1>
+    </header>
 
+    <div class="container mt-5">
         <div class="row">
-            <!-- Categories Section -->
             <div class="col-md-4">
-                <h3>Categories</h3>
+                <h3 class="text-xl font-bold mb-3">Mualliflar
+                    (muallif ismini bosish orqali uning kitoblarini ko'rishingiz mumkin)</h3>
                 <ul class="list-group">
                     {% for category in categories %}
-                    <li class="list-group-item">
-                        {{ category.name }}
-                    </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{% url 'books_by_author' category.id %}">{{ category.name }}</a>
+                            <span class="badge badge-primary badge-pill">{{ category.book_count }}</span>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
 
-            <!-- Books Section -->
             <div class="col-md-8">
-                <h3>Kitoblar</h3>
+                <h3 class="text-xl font-bold mb-3">Kitoblar</h3>
                 <div class="row">
                     {% for book in books %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <!-- Book image -->
                             {% if book.image %}
                             <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
                             {% else %}
@@ -41,7 +50,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ book.title }}</h5>
                                 <p class="card-text">{{ book.summary|truncatewords:15 }}</p>
-                                <!-- Book price -->
                                 <p class="card-text">Price: ${{ book.price }}</p>
                                 <a href="{% url 'book_detail' book.id %}" class="btn btn-primary">View Details</a>
                             </div>

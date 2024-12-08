@@ -1,51 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ book.title }} - Details</title>
+    <title>{{ book.title }}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-primary text-white py-4">
+        <h1 class="text-center text-4xl font-bold">Kitob Do'koni</h1>
+    </header>
+
     <div class="container mt-5">
-        <h1 class="text-center mb-4">{{ book.title }}</h1>
         <div class="row">
-            <div class="col-md-6">
-                <!-- Book Image -->
+            <div class="col-md-4">
                 {% if book.image %}
-                <img src="{{ book.image.url }}" class="img-fluid" alt="{{ book.title }}">
+                    <img src="{{ book.image.url }}" class="img-fluid" alt="{{ book.title }}">
                 {% else %}
-                <img src="https://via.placeholder.com/300" class="img-fluid" alt="{{ book.title }}">
+                    <img src="https://via.placeholder.com/300" class="img-fluid" alt="book image">
                 {% endif %}
             </div>
-            <div class="col-md-6">
-                <h3>Kitob ma'lumotlari</h3>
-                <p><strong>Mu'allif:</strong> {{ book.category.name }}</p>
-                <p><strong>Chop etilgan sanasi:</strong> {{ book.publication_date }}</p>
-                <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-                <p><strong>Janri:</strong> {{ book.genre }}</p>
-                <p><strong>Kitob haqida:</strong> {{ book.summary }}</p>
-                <p><strong>Narxi:</strong> ${{ book.price }}</p>  <!-- Price Field -->
+
+            <div class="col-md-8">
+                <h2 class="text-2xl font-bold">{{ book.title }}</h2>
+                <p class="text-xl mb-3">{{ book.summary }}</p>
+                <p><strong>Price: </strong>${{ book.price }}</p>
+                <p><strong>Genre: </strong>{{ book.genre }}</p>
+                <p><strong>Category: </strong>{{ book.category.name }}</p>
+                <p><strong>ISBN: </strong>{{ book.isbn }}</p>
+                <p><strong>Publication Date: </strong>{{ book.publication_date }}</p>
+                <a href="/" class="btn btn-primary">Back to Home</a>
             </div>
-        </div>
-        <div class="text-center mt-4">
-            <a href="{% url 'home' %}" class="btn btn-secondary">Bosh sahifaga qaytish</a>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
 </body>
 
-</html>
-</title>
-</head>
-<body>
-
-</body>
 </html>
